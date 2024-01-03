@@ -31,12 +31,13 @@
 在这张图中，主程序`server.exe`试图读取必要的`bert_models.json`，但同文件夹下没有`bert`目录:
 
 ```
+$ tree --charset ascii
 .
-├───onnx
-│   └───BertVITS2.3PT
-├───server.exe
-├───jieba.cache
-└───_internal
+|-- onnx
+|   `-- BertVITS2.3PT
+|-- server.exe
+|-- jieba.cache
+`-- _internal
 ```
 
 ## 如何使用（使用源码运行）
