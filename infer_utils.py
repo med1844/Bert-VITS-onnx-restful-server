@@ -217,11 +217,11 @@ def format_utils(text, speaker):
 # faster, lower quality
 def tts_fn(
     text: str,
-    speaker,
-    sdp_ratio,
-    noise_scale,
-    noise_scale_w,
-    length_scale,
+    speaker=0,
+    sdp_ratio=0.5,
+    noise_scale=0.6,
+    noise_scale_w=0.9,
+    length_scale=1.0,
 ):
     audio_list = process_text(
         text,
