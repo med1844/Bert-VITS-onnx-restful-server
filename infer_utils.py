@@ -131,7 +131,19 @@ def infer_multilang(
     x_tst_lengths = torch.LongTensor([phones.size(0)]).numpy()
     speakers = torch.LongTensor([sid]).numpy()
 
-    audio = session(x_tst, tones, lang_ids, bert, ja_bert, en_bert, speakers)
+    audio = session(
+        x_tst,
+        tones,
+        lang_ids,
+        bert,
+        ja_bert,
+        en_bert,
+        speakers,
+        sdp_ratio=sdp_ratio,
+        sdp_noise_scale=noise_scale,
+        seq_noise_scale=noise_scale_w,
+        length_scale=length_scale,
+    )
     return audio
 
 

@@ -14,7 +14,16 @@ def tts():
         text = request.args.get("text")
         if not text:
             return jsonify({"status": 40000000, "message": "No text provided"})
-        audio = tts_split(text)
+        length_scale = request.args.get("length_scale", 1.0, type=float)
+        if not 0.1 <= length_scale <= 2:
+            return jsonify(
+                {
+                    "status": 40000000,
+                    "message": "length_scale must be between 0.1 and 2",
+                }
+            )
+        print("tts_split param: (text=%s, length_scale=%.1f)" % (text, length_scale))
+        audio = tts_split(text, length_scale=length_scale)
         f = BytesIO()
         soundfile.write(f, audio, 44100, format="WAV")
         f.seek(0)
