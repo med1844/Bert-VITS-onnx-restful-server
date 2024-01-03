@@ -7,6 +7,7 @@ from sentence import split_by_language
 import numpy as np
 import re_matching
 import pyloudnorm
+from pydub import AudioSegment
 
 
 def normalize_loudness(y: np.ndarray, fs: int, target_loudness=-23) -> np.ndarray:
@@ -248,8 +249,9 @@ def tts_split(
     interval_between_para=1,
     interval_between_sent=0.2,
 ):
-    while text.find("\n\n") != -1:
-        text = text.replace("\n\n", "\n")
+    # while text.find("\n\n") != -1:
+    #     text = text.replace("\n\n", "\n")
+    text = text.replace("\n", " ")
     text = text.replace("|", "")
     para_list = re_matching.cut_para(text)
     para_list = [p for p in para_list if p != ""]
@@ -266,8 +268,8 @@ def tts_split(
                     length_scale,
                 )
             )
-            silence = np.zeros(int(44100 * interval_between_para), dtype=np.int16)
-            audio_list.append(silence)
+            # silence = np.zeros(int(44100 * interval_between_para), dtype=np.int16)
+            # audio_list.append(silence)
         else:
             audio_list_sent = []
             sent_list = re_matching.cut_sent(p)
@@ -281,8 +283,8 @@ def tts_split(
                     noise_scale_w,
                     length_scale,
                 )
-                silence = np.zeros((int)(44100 * interval_between_sent))
-                audio_list_sent.append(silence)
+                # silence = np.zeros((int)(44100 * interval_between_sent))
+                # audio_list_sent.append(silence)
             if (interval_between_para - interval_between_sent) > 0:
                 silence = np.zeros(
                     (int)(44100 * (interval_between_para - interval_between_sent))
