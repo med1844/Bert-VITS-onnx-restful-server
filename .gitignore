@@ -1,0 +1,9 @@
+.venv
+__pycache__
+jieba.cache
+*.bin
+*.onnx
+*.json
+*.wav
+cmudict.rep
+cmudict_cache.pickle
