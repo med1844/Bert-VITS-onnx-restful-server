@@ -35,6 +35,7 @@ $ tree --charset ascii
 .
 |-- onnx
 |   `-- BertVITS2.3PT
+|-- ffmpeg.exe
 |-- server.exe
 |-- jieba.cache
 `-- _internal
