@@ -77,3 +77,8 @@ pip install -r requirements.txt
 ```powershell
 pyinstaller .\server.spec
 ```
+
+## TODO
+
+- [ ] Fix lang auto segmentation issues
+- [ ] Add kanji zh_CN to zh_TW for JP
